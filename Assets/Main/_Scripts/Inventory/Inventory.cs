@@ -115,6 +115,7 @@ public class InventoryItem
     public Sprite sprite;
     public int maxStackSize = 1;
     public int actualAmount = 1;
+    public int slotIndex = 0;
 
     public InventoryItem(string name, Sprite icon, int maxStack = 99)
     {

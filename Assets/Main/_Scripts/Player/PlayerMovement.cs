@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameObject model;
     [SerializeField] CinemachineCamera playerCamera;
+    [SerializeField] CinemachineInputAxisController cinemachineInput;
     [SerializeField] float speed = 5f;
     Rigidbody rb;
     PlayerAnimations animations;
@@ -16,10 +17,22 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animations = GetComponent<PlayerAnimations>();
     }
-    
+
     void FixedUpdate()
     {
         OnMove();
+    }
+
+    void LateUpdate()
+    {
+        if (InputManager.Instance.inputActions.Game.enabled)
+        {
+            cinemachineInput.enabled = true;
+        }
+        else
+        {
+            cinemachineInput.enabled = false;
+        }
     }
 
     void OnMove()
@@ -27,12 +40,12 @@ public class PlayerMovement : MonoBehaviour
         // Get input
         movement = new Vector3(InputManager.Instance.GetMovementInput().x, 0, InputManager.Instance.GetMovementInput().y);
         movement.Normalize();
-        
+
         // Adjust movement relative to camera
         Vector3 cameraForward = playerCamera.transform.forward;
         cameraForward.y = 0;
         cameraForward.Normalize();
-        
+
         Vector3 cameraRight = playerCamera.transform.right;
         cameraRight.y = 0;
         cameraRight.Normalize();

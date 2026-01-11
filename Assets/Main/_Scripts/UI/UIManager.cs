@@ -44,11 +44,11 @@ public class UIManager : MonoBehaviour
         hotbarPanel.gameObject.SetActive(true);
     }
 
-    public void OpenChestUI(Chest chest)
+    public void OpenChestUI(Inventory<InventoryItem> inventory)
     {
         CloseAll();
         chestPanel.gameObject.SetActive(true);
-        chestPanel.OpenChest(chest);
+        chestPanel.OpenChest(inventory);
     }
 
     void CloseAll()

@@ -12,7 +12,7 @@ public class Chest : InventoryHolder, IInteractable
 
     public void OpenChest()
     {
-        UIManager.instance.OpenChestUI(this);
+        UIManager.instance.OpenChestUI(inventory);
     }
 
     public void Interact()

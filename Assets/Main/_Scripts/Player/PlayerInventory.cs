@@ -11,7 +11,7 @@ public class PlayerInventory : InventoryHolder
     #region OnEnable/OnDisable
     void OnEnable()
     {
-        // inventory.onInventoryChanged += SetHotbarItems;
+        InputManager.Instance.inputActions.Game.Inventory.performed += ctx => UIManager.instance.OpenChestUI(inventory);
         // inputActions.Player.btn1.performed += ctx => SelectItem(0);
         // inputActions.Player.btn2.performed += ctx => SelectItem(1);
         // inputActions.Player.btn3.performed += ctx => SelectItem(2);
@@ -25,7 +25,7 @@ public class PlayerInventory : InventoryHolder
     }
     void OnDisable()
     {
-        // inventory.onInventoryChanged -= SetHotbarItems;
+        InputManager.Instance.inputActions.Game.Inventory.performed -= ctx => UIManager.instance.OpenChestUI(inventory);
         // inputActions.Player.btn1.performed -= ctx => SelectItem(0);
         // inputActions.Player.btn2.performed -= ctx => SelectItem(1);
         // inputActions.Player.btn3.performed -= ctx => SelectItem(2);
