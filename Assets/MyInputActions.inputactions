@@ -143,6 +143,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "WorldInventory",
+            "id": "d615905e-700f-4e66-80e4-79415e8d345b",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "22ffd98f-5251-4f67-b1fd-af0151a92ff3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4e39d27e-d7c1-4d65-a06a-17b226e2785c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "173aed35-18e1-4b5f-b06b-4ce4178b0f38",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

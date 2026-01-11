@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animations = GetComponent<PlayerAnimations>();
     }
-
+    
     void FixedUpdate()
     {
         OnMove();

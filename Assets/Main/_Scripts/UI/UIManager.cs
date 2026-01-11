@@ -17,6 +17,17 @@ public class UIManager : MonoBehaviour
         SwitchToHotbarMode();
     }
 
+    void Start()
+    {
+        SetCursorState(false);
+    }
+
+    public void SetCursorState(bool visible)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
     public void SwitchToDialogueMode(string npcName, Dialogue dialogue)
     {
         CloseAll();
