@@ -8,21 +8,33 @@ public class UIItem : MonoBehaviour
     [SerializeField] TMP_Text itemQuantityTxt;
     [SerializeField] Image itemIconImg;
 
+    InventoryItem item;
     public void SetItem(InventoryItem item)
     {
+        this.item = item;
         if (item == null)
         {
             itemNameTxt.text = "Empty";
             itemQuantityTxt.text = "";
             itemIconImg.sprite = null;
-            itemIconImg.color = new Color(1, 1, 1, 0); // Make icon invisible
         }
         else
         {
             itemNameTxt.text = item._name;
             itemQuantityTxt.text = item.actualAmount.ToString();
             itemIconImg.sprite = item.sprite;
-            itemIconImg.color = new Color(1, 1, 1, 1); // Make icon visible
         }
+    }
+
+    public void HoldItem()
+    {
+        UIManager.instance.holdingItem.SetItem(item);
+    }
+
+    public void ChangeItemPosition(UIItem targetItem)
+    {
+        InventoryItem tempItem = targetItem.item;
+        targetItem.SetItem(item);
+        SetItem(tempItem);
     }
 }

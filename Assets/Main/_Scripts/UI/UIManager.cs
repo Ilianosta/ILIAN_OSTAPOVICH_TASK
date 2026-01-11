@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIDialoguePanel dialoguePanel;
     [SerializeField] UIHotbar hotbarPanel;
     [SerializeField] UIChest chestPanel;
+
+    public UIItem holdingItem;
+
     private void Awake()
     {
         if (UIManager.instance) Destroy(this);
