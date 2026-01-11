@@ -7,7 +7,7 @@ public static class ItemFactory
         switch (data)
         {
             default:
-                return new InventoryItem(data.Name, data.sprite, data.maxStackSize);
+                return new InventoryItem(data.Name, data.sprite, data.maxStackSize, data.description);
         }
     }
 }

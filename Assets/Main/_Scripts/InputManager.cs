@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -28,5 +29,11 @@ public class InputManager : MonoBehaviour
         Vector2 movement = inputActions.Game.Move.ReadValue<Vector2>();
         movement.Normalize();
         return movement;
+    }
+
+    internal Vector3 GetMousePosition()
+    {
+        Vector2 mousePos = inputActions.WorldInventory.MousePosition.ReadValue<Vector2>();
+        return new Vector3(mousePos.x, mousePos.y, 0);
     }
 }

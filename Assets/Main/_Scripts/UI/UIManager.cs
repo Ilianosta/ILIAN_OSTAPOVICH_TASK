@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -7,6 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIDialoguePanel dialoguePanel;
     [SerializeField] UIHotbar hotbarPanel;
     [SerializeField] UIChest chestPanel;
+    [SerializeField] TMP_Text hoverInfoTxt;
+
+    public GameObject hoverInfo;
 
     public UIItem holdingItem;
 
@@ -56,5 +60,11 @@ public class UIManager : MonoBehaviour
         dialoguePanel.gameObject.SetActive(false);
         hotbarPanel.gameObject.SetActive(false);
         chestPanel.gameObject.SetActive(false);
+    }
+
+    public void ShowHoverInfo(string info)
+    {
+        hoverInfoTxt.text = info;
+        hoverInfo.SetActive(true);
     }
 }

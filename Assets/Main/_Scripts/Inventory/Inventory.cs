@@ -116,12 +116,14 @@ public class InventoryItem
     public int maxStackSize = 1;
     public int actualAmount = 1;
     public int slotIndex = 0;
+    public string description = "No description";
 
-    public InventoryItem(string name, Sprite icon, int maxStack = 99)
+    public InventoryItem(string name, Sprite icon, int maxStack = 99, string desc = "No description")
     {
         _name = name;
         sprite = icon;
         maxStackSize = maxStack;
         actualAmount = 1;
+        description = desc;
     }
 }

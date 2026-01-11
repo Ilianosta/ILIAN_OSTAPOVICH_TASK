@@ -7,8 +7,8 @@ public class UIItem : MonoBehaviour
     [SerializeField] TMP_Text itemNameTxt;
     [SerializeField] TMP_Text itemQuantityTxt;
     [SerializeField] Image itemIconImg;
-
     InventoryItem item;
+
     public void SetItem(InventoryItem item)
     {
         this.item = item;
@@ -29,6 +29,7 @@ public class UIItem : MonoBehaviour
     public void HoldItem()
     {
         UIManager.instance.holdingItem.SetItem(item);
+        UIManager.instance.holdingItem.gameObject.SetActive(true);
     }
 
     public void ChangeItemPosition(UIItem targetItem)
@@ -36,5 +37,13 @@ public class UIItem : MonoBehaviour
         InventoryItem tempItem = targetItem.item;
         targetItem.SetItem(item);
         SetItem(tempItem);
+    }
+
+    public void OnHover()
+    {
+        if (item != null)
+        {
+            UIManager.instance.ShowHoverInfo($"{item._name} Quantity: {item.actualAmount} \n {item.description}");
+        }
     }
 }

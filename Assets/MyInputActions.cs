@@ -293,6 +293,24 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hold"",
+                    ""type"": ""Button"",
+                    ""id"": ""44c45d0f-c49c-4ce5-802d-34d56d13f71c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""d517cd13-79be-4800-82bf-5004903348cb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -317,6 +335,28 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Close"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95a1d341-d2ba-486b-a336-8404c0128e74"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ed020c6-82a9-496c-9d9d-ae3b0a9db9d1"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -335,6 +375,8 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
         // WorldInventory
         m_WorldInventory = asset.FindActionMap("WorldInventory", throwIfNotFound: true);
         m_WorldInventory_Close = m_WorldInventory.FindAction("Close", throwIfNotFound: true);
+        m_WorldInventory_Hold = m_WorldInventory.FindAction("Hold", throwIfNotFound: true);
+        m_WorldInventory_MousePosition = m_WorldInventory.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     ~@MyInputActions()
@@ -643,6 +685,8 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_WorldInventory;
     private List<IWorldInventoryActions> m_WorldInventoryActionsCallbackInterfaces = new List<IWorldInventoryActions>();
     private readonly InputAction m_WorldInventory_Close;
+    private readonly InputAction m_WorldInventory_Hold;
+    private readonly InputAction m_WorldInventory_MousePosition;
     /// <summary>
     /// Provides access to input actions defined in input action map "WorldInventory".
     /// </summary>
@@ -658,6 +702,14 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "WorldInventory/Close".
         /// </summary>
         public InputAction @Close => m_Wrapper.m_WorldInventory_Close;
+        /// <summary>
+        /// Provides access to the underlying input action "WorldInventory/Hold".
+        /// </summary>
+        public InputAction @Hold => m_Wrapper.m_WorldInventory_Hold;
+        /// <summary>
+        /// Provides access to the underlying input action "WorldInventory/MousePosition".
+        /// </summary>
+        public InputAction @MousePosition => m_Wrapper.m_WorldInventory_MousePosition;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -687,6 +739,12 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
             @Close.started += instance.OnClose;
             @Close.performed += instance.OnClose;
             @Close.canceled += instance.OnClose;
+            @Hold.started += instance.OnHold;
+            @Hold.performed += instance.OnHold;
+            @Hold.canceled += instance.OnHold;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         /// <summary>
@@ -701,6 +759,12 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
             @Close.started -= instance.OnClose;
             @Close.performed -= instance.OnClose;
             @Close.canceled -= instance.OnClose;
+            @Hold.started -= instance.OnHold;
+            @Hold.performed -= instance.OnHold;
+            @Hold.canceled -= instance.OnHold;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         /// <summary>
@@ -799,5 +863,19 @@ public partial class @MyInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClose(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Hold" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHold(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MousePosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }
