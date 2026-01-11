@@ -27,10 +27,12 @@ public class PlayerMovement : MonoBehaviour
         // Get input
         movement = new Vector3(InputManager.Instance.GetMovementInput().x, 0, InputManager.Instance.GetMovementInput().y);
         movement.Normalize();
+        
         // Adjust movement relative to camera
         Vector3 cameraForward = playerCamera.transform.forward;
         cameraForward.y = 0;
         cameraForward.Normalize();
+        
         Vector3 cameraRight = playerCamera.transform.right;
         cameraRight.y = 0;
         cameraRight.Normalize();
@@ -38,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Move
         rb.linearVelocity = movement * speed + new Vector3(0, rb.linearVelocity.y, 0);
-
 
         //Rotate
         if (movement != Vector3.zero)
