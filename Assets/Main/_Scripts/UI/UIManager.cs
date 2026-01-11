@@ -5,8 +5,8 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     [SerializeField] UIDialoguePanel dialoguePanel;
-    [SerializeField] UIHotbar hotbar;
-
+    [SerializeField] UIHotbar hotbarPanel;
+    [SerializeField] UIChest chestPanel;
     private void Awake()
     {
         if (UIManager.instance) Destroy(this);
@@ -19,14 +19,28 @@ public class UIManager : MonoBehaviour
 
     public void SwitchToDialogueMode(string npcName, Dialogue dialogue)
     {
-        hotbar.gameObject.SetActive(false);
+        CloseAll();
         dialoguePanel.gameObject.SetActive(true);
         dialoguePanel.SetDialogue(npcName, dialogue);
     }
 
     public void SwitchToHotbarMode()
     {
+        CloseAll();
+        hotbarPanel.gameObject.SetActive(true);
+    }
+
+    public void OpenChestUI(Chest chest)
+    {
+        CloseAll();
+        chestPanel.gameObject.SetActive(true);
+        chestPanel.OpenChest(chest);
+    }
+
+    void CloseAll()
+    {
         dialoguePanel.gameObject.SetActive(false);
-        hotbar.gameObject.SetActive(true);
+        hotbarPanel.gameObject.SetActive(false);
+        chestPanel.gameObject.SetActive(false);
     }
 }
