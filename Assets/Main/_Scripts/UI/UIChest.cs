@@ -10,14 +10,14 @@ public class UIChest : MonoBehaviour
     List<UIItem> uiItems = new List<UIItem>();
 
     UIItem hoveredItem;
-
     void OnEnable()
     {
         InputManager.Instance.inputActions.WorldInventory.Enable();
         InputManager.Instance.inputActions.Game.Disable();
         InputManager.Instance.inputActions.WorldInventory.Close.performed += ctx => UIManager.instance.SwitchToHotbarMode();
 
-        InputManager.Instance.inputActions.WorldInventory.Hold.performed += ctx => RayToHoverItem();
+        InputManager.Instance.inputActions.WorldInventory.Hold.performed += ctx => SelectHoveredItem();
+        InputManager.Instance.inputActions.WorldInventory.Hold.canceled += ctx => DropItem();
 
         UIManager.instance.SetCursorState(true);
     }
@@ -36,11 +36,28 @@ public class UIChest : MonoBehaviour
         RayToHoverItem();
         if (hoveredItem != null)
         {
-            // Debug.Log("Hovering over item: " + hoveredItem.name);
             Vector3 mousePos = InputManager.Instance.GetMousePosition();
-            UIManager.instance.holdingItem.transform.position = mousePos;
+            UIManager.instance.itemHold.transform.position = mousePos;
             hoveredItem.OnHover();
         }
+    }
+
+    void SelectHoveredItem()
+    {
+        if (hoveredItem == null) return;
+
+        UIManager.instance.itemHold.SetHeldItem(hoveredItem);
+        UIManager.instance.itemHold.gameObject.SetActive(true);
+        UIManager.instance.isHoldingItem = true;
+    }
+
+    void DropItem()
+    {
+        if (hoveredItem == null) return;
+
+        hoveredItem.ChangeItemPosition(UIManager.instance.itemHold.previousItem);
+        UIManager.instance.itemHold.gameObject.SetActive(false);
+        UIManager.instance.isHoldingItem = false;
     }
 
     public void OpenChest(Inventory<InventoryItem> inventory)

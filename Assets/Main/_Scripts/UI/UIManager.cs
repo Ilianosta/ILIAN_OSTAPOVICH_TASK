@@ -9,10 +9,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIHotbar hotbarPanel;
     [SerializeField] UIChest chestPanel;
     [SerializeField] TMP_Text hoverInfoTxt;
-
+    public UIItemHold itemHold;
     public GameObject hoverInfo;
 
-    public UIItem holdingItem;
+    public bool isHoldingItem;
 
     private void Awake()
     {
@@ -64,6 +64,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowHoverInfo(string info)
     {
+        if (isHoldingItem) return;
+
         hoverInfoTxt.text = info;
         hoverInfo.SetActive(true);
     }
