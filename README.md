@@ -4,8 +4,10 @@ Movement
 - WASD
 - E or LMB for interact
 - I for Open your inventory
+  
 On dialogue with npc
 - Spacebar or LMB for skip dialogue
+
 On Inventory
 - E or Esc to close inventory
 
