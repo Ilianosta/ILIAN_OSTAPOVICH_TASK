@@ -1,3 +1,14 @@
+<h2> Controls </h2>
+
+Movement
+- WASD
+- E or LMB for interact
+- I for Open your inventory
+On dialogue with npc
+- Spacebar or LMB for skip dialogue
+On Inventory
+- E or Esc to close inventory
+
 <h2>System Overview</h2>
 
 The objective of this task was to design and implement a functional and well-structured system while demonstrating solid programming fundamentals. The solution was built with a strong focus on clean architecture, logical data flow, and code readability. Each component was designed to have a clear responsibility, allowing the system to remain scalable and easy to maintain. The overall structure reflects an approach that could be extended or adapted for more complex scenarios.
