@@ -106,6 +106,40 @@ public class Inventory<T> where T : InventoryItem
     {
         Items.Clear();
     }
+
+    public InventoryData ToData()
+    {
+        InventoryData data = new();
+
+        foreach (var item in Items)
+        {
+            data.items.Add(new InventoryItemData
+            {
+                itemId = item._name,
+                amount = item.actualAmount,
+                slotIndex = item.slotIndex
+            });
+        }
+
+        return data;
+    }
+
+    public void LoadFromData(InventoryData data)
+    {
+        Clear();
+
+        foreach (var itemData in data.items)
+        {
+            T item = ItemFactory.CreateItem(itemData) as T;
+            item.actualAmount = itemData.amount;
+            item.slotIndex = itemData.slotIndex;
+
+            Items.Add(item);
+        }
+
+        onInventoryChanged?.Invoke();
+    }
+    
 }
 
 [System.Serializable]

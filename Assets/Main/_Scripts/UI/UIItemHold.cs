@@ -6,6 +6,8 @@ public class UIItemHold : MonoBehaviour
     public UIItem previousItem;
     public void SetHeldItem(UIItem item)
     {
+        if (item == null) return;
+
         heldItem.SetItem(item.Item);
         previousItem = item;
     }

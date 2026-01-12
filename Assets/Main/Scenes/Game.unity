@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044f1cac8cb3b1c408d7847a21025860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
+  ownerId: 
   capacity: 20
 --- !u!4 &154980234
 Transform:
@@ -4369,6 +4370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e0c616843b4ec4aa3f52782a7956c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  ownerId: 
   selectedItem:
     _name: 
     sprite: {fileID: 0}
@@ -6766,6 +6768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6537aed6c5c33514a91f62537582b7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryHolder
+  ownerId: 
 --- !u!1001 &1626310634
 PrefabInstance:
   m_ObjectHideFlags: 0

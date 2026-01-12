@@ -34,6 +34,8 @@ public class UIItem : MonoBehaviour
 
     public void ChangeItemPosition(UIItem targetItem)
     {
+        if(targetItem == null) return;
+        
         InventoryItem tempItem = targetItem.Item;
         targetItem.SetItem(item);
         SetItem(tempItem);

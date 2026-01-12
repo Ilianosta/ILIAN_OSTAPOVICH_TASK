@@ -10,4 +10,13 @@ public static class ItemFactory
                 return new InventoryItem(data.Name, data.sprite, data.maxStackSize, data.description);
         }
     }
+
+    public static InventoryItem CreateItem(InventoryItemData data)
+    {
+        switch (data)
+        {
+            default:
+                return new InventoryItem(data.itemId, null, 1, "No description");
+        }
+    }
 }

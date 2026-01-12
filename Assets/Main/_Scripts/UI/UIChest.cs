@@ -44,7 +44,7 @@ public class UIChest : MonoBehaviour
 
     void SelectHoveredItem()
     {
-        if (hoveredItem == null) return;
+        if (hoveredItem == null || hoveredItem.Item == null) return;
 
         UIManager.instance.itemHold.SetHeldItem(hoveredItem);
         UIManager.instance.itemHold.gameObject.SetActive(true);
